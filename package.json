@@ -10,6 +10,7 @@
     "aos": "^2.3.4",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
+    "compressorjs": "^1.0.7",
     "dotenv": "^8.2.0",
     "emailjs-com": "^3.2.0",
     "firebase": "^8.7.1",

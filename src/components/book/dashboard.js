@@ -4,6 +4,7 @@ import { auth } from '../firebase/firebaseConfig';
 import ImageGrid from './imageGrid';
 import Modal from './modal';
 import ProgressBar from './progressBar';
+import Compressor from 'compressorjs';
 
 function Dashboard() {
   const history = useHistory();
@@ -25,8 +26,16 @@ function Dashboard() {
   const handleFile = (e) => {
     let pic = e.target.files[0];
     if (pic && fileType.includes(pic.type)) {
-      setFile(pic);
-      setError('');
+      new Compressor(pic, {
+        quality: pic.size < 6291456 && pic.size > 3145728 ? 0.6 : 0.4,
+        success(result) {
+          setFile(result);
+          setError('');
+        },
+        error(err) {
+          console.log(err.message);
+        },
+      });
     } else {
       setFile(null);
       setError('Please select an image file  (png or jpg)');

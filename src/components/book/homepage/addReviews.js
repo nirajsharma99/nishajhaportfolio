@@ -2,6 +2,7 @@ import nullavatar from '../../../nullavatar.jpg';
 import { useState, useEffect } from 'react';
 import ProgressBarReview from './progressBarReview';
 import ReviewsEdit from './reviewEdit';
+import Compressor from 'compressorjs';
 
 const AddReviews = () => {
   const [file, setFile] = useState(null);
@@ -14,8 +15,16 @@ const AddReviews = () => {
   const handleFile = (e) => {
     let pic = e.target.files[0];
     if (pic && fileType.includes(pic.type)) {
-      setFile(pic);
-      setError('');
+      new Compressor(pic, {
+        quality: pic.size < 6291456 && pic.size > 3145728 ? 0.6 : 0.4,
+        success(result) {
+          setFile(result);
+          setError('');
+        },
+        error(err) {
+          console.log(err.message);
+        },
+      });
     } else {
       setFile(null);
       setError('Please select an image file  (png or jpg)');
