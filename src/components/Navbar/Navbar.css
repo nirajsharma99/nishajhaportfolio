@@ -1,0 +1,137 @@
+.NavbarItems {
+  /*background: linear-gradient(
+    90deg,
+    rgb(110, 94, 254) 0%,
+    rgba(73, 63, 252, 1) 100%
+  );*/
+  background: white;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  width: 80%;
+  height: 65px;
+  position: fixed;
+  z-index: 10;
+}
+
+.nav-menu {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: 10px;
+  list-style: none;
+  text-align: center;
+  width: 100%;
+  justify-content: end;
+  margin-bottom: 0px;
+}
+
+.nav-links {
+  color: rgb(46, 44, 44);
+  background: transparent;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.7rem;
+  font-family: 'Sacramento', cursive;
+  font-weight: 700;
+}
+.nav-hr {
+  margin: 0px;
+  opacity: 0.8;
+  border-radius: 10px;
+  height: 4px !important;
+  animation: hrAnim 1s ease-out;
+  width: 100%;
+}
+@keyframes hrAnim {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+.nav-links:hover {
+  transition: all 0.2s ease-out;
+  color: gray !important;
+}
+.fa-bars {
+  color: black;
+}
+.menu-icon {
+  display: none;
+}
+.nav-name {
+  position: absolute;
+  font-family: 'Sacramento', cursive;
+  font-size: 3rem;
+  left: 0%;
+}
+@media screen and (max-width: 990px) {
+  .NavbarItems {
+    position: fixed;
+    width: 100%;
+  }
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    left: -120%;
+    margin-right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+  .nav-menu.active {
+    padding: 0;
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+  .nav-links {
+    color: black;
+    text-align: center;
+    padding: 2rem 0rem;
+    width: 100%;
+    display: table;
+  }
+
+  .menu-icon {
+    display: block;
+    position: fixed;
+    right: 4%;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  .nav-name {
+    position: fixed;
+  }
+  .links-active {
+    border-left: 5px solid black;
+  }
+  .nav-menu {
+    padding-top: 5rem !important;
+  }
+  .nav-hr {
+    display: none;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .NavbarItems {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .nav-hr {
+    display: none;
+  }
+  .nav-links {
+    padding: 1rem 0rem;
+  }
+}
