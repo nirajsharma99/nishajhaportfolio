@@ -173,7 +173,7 @@ function Gallery() {
   return (
     <div className="gallery-container px-3 pb-3">
       {docs.length === 0 && <Loader />}
-      <div className="text-center">
+      <div className="neonText-holder">
         <span className="neonText">Gallery</span>
       </div>
       <div className="images-container">

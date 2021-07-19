@@ -564,6 +564,10 @@ a.insta-btn {
   background: #050801;
   margin: auto;
 }
+.neonText-holder {
+  text-align: center;
+  padding: 0.5rem;
+}
 .neonText {
   animation: flicker 1.5s infinite alternate;
   color: #fff;
