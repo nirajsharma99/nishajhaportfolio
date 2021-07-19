@@ -30,7 +30,7 @@ const SharedImage = ({ doc, setImagedata }) => {
       </button>
     );
   };
-  const imageUrl = 'http://localhost:3000/gallery/' + doc.id;
+  const imageUrl = 'https://nishajha.netlify.app/gallery/' + doc.id;
   return (
     <div className="view-image-container">
       <div className="view-image-outer">

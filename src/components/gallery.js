@@ -90,7 +90,8 @@ function Gallery(props) {
   };
 
   const ImageWindow = () => {
-    const imageUrl = 'https://nishajha.netlify.app/' + docs[show.index].id;
+    const imageUrl =
+      'https://nishajha.netlify.app/gallery/' + docs[show.index].id;
     return (
       <div className="view-image-container">
         <div className="view-image-outer">
