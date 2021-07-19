@@ -120,7 +120,7 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route path="/gallery" exact component={Gallery} />
+          <Route path="/gallery/:id?" component={Gallery} />
           <Route path="/itsme" exact component={LOGIN} />
           <Route path="/book" exact component={Dashboard} />
           <Route path="/book/homepage" exact component={Hompeage} />

@@ -7,13 +7,15 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { WhatsappShareButton, FacebookShareButton } from 'react-share';
 import ReferenceForm from './referenceForm';
 import Loader from './loader/loader';
+import SharedImage from './sharedimage';
 
-function Gallery() {
+function Gallery(props) {
   const { docs } = useFirestore('images');
   const [show, setShow] = useState({ show: false, index: 0 });
   const [slider, setSlider] = useState(false);
   const [share, setShare] = useState(false);
   const [refer, setRefer] = useState(false);
+  const [imagedata, setImagedata] = useState({ show: false, data: null });
 
   useEffect(() => {
     if (slider) {
@@ -24,6 +26,18 @@ function Gallery() {
       }
     }
   }, [show, slider]);
+
+  useEffect(() => {
+    const id = props.match.params.id;
+    console.log(id);
+    db.collection('images')
+      .doc(id)
+      .get()
+      .then((snapshot) => {
+        setImagedata({ show: true, data: snapshot.data() });
+      });
+  }, [props]);
+  console.log(imagedata);
 
   const handleClick = (index) => {
     setShow({ show: true, index: index });
@@ -76,7 +90,7 @@ function Gallery() {
   };
 
   const ImageWindow = () => {
-    const imageUrl = 'http://localhost:3000/gallery/' + docs[show.index].id;
+    const imageUrl = 'https://nishajha.netlify.app/' + docs[show.index].id;
     return (
       <div className="view-image-container">
         <div className="view-image-outer">
@@ -192,6 +206,9 @@ function Gallery() {
         </motion.div>
       </div>
       {show.show ? <ImageWindow show={show} /> : null}
+      {imagedata.show && (
+        <SharedImage doc={imagedata.data} setImagedata={setImagedata} />
+      )}
     </div>
   );
 }
