@@ -9,7 +9,6 @@ const SharedImage = ({ doc, setImagedata }) => {
   const [refer, setRefer] = useState(false);
   const LikeButton = () => {
     const [like, setLike] = useState(false);
-    console.log(like);
 
     const handleLike = (e, id, count) => {
       e.preventDefault();

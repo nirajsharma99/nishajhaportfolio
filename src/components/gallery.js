@@ -29,7 +29,6 @@ function Gallery(props) {
 
   useEffect(() => {
     const id = props.match.params.id;
-    console.log(id);
     db.collection('images')
       .doc(id)
       .get()
@@ -37,7 +36,6 @@ function Gallery(props) {
         setImagedata({ show: true, data: snapshot.data() });
       });
   }, [props]);
-  console.log(imagedata);
 
   const handleClick = (index) => {
     setShow({ show: true, index: index });
