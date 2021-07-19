@@ -5,9 +5,9 @@ import { db, storage } from '../firebase/firebaseConfig';
 const ImageGrid = ({ setSelectedImg, collection }) => {
   const { docs } = useFirestore(collection);
 
-  const handleClick = (e, url) => {
+  const handleClick = (e, doc) => {
     if (e.target.classList.contains('expand-img')) {
-      setSelectedImg(url);
+      setSelectedImg(doc);
     }
   };
 
@@ -24,7 +24,7 @@ const ImageGrid = ({ setSelectedImg, collection }) => {
             className="img-wrap"
             key={doc.id}
             layout
-            onClick={(e) => handleClick(e, doc.url)}
+            onClick={(e) => handleClick(e, doc)}
           >
             <motion.img
               src={doc.url}

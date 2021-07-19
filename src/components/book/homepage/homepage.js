@@ -70,7 +70,11 @@ const Hompeage = () => {
       </div>
       <ImageGrid setSelectedImg={setSelectedImg} collection="toparts" />
       {selectedImg && (
-        <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
+        <Modal
+          selectedImg={selectedImg}
+          setSelectedImg={setSelectedImg}
+          collection={'toparts'}
+        />
       )}
       <AddReviews />
     </div>

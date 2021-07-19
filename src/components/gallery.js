@@ -43,32 +43,6 @@ function Gallery(props) {
     setShow({ show: true, index: index });
   };
 
-  const LikeButton = () => {
-    const [like, setLike] = useState(false);
-    console.log(like);
-
-    const handleLike = (e, id, count) => {
-      e.preventDefault();
-      setLike(true);
-      setSlider(false);
-      if (!like) {
-        db.collection('images')
-          .doc(id)
-          .update({ count: count + 1 });
-      }
-    };
-    return (
-      <button
-        onClick={(e) => {
-          handleLike(e, docs[show.index].id, docs[show.index].count);
-        }}
-      >
-        <i className={'fas fa-heart ' + (like ? 'liked' : '')}></i>
-        <span className="likes-count">{docs[show.index].count}</span>
-      </button>
-    );
-  };
-
   const next = () => {
     setSlider(false);
     const end = docs.length - 1;
@@ -90,27 +64,48 @@ function Gallery(props) {
   };
 
   const ImageWindow = () => {
+    const [like, setLike] = useState(false);
+    const handleLike = (id, count) => {
+      console.log(like);
+      if (!like) {
+        db.collection('images')
+          .doc(id)
+          .update({ count: count + 1 });
+      }
+    };
     const imageUrl =
       'https://nishajha.netlify.app/gallery/' + docs[show.index].id;
     return (
       <div className="view-image-container">
         <div className="view-image-outer">
           <img
-            //data-aos={slider ? 'slide-left' : 'flip-right'}
             src={docs[show.index].url}
             className="gallery-img shadow-lg"
             alt={'expanded_image' + show.index}
           />
 
           <div className="user-buttons d-inline-flex shadow-lg">
-            <LikeButton />
+            <button
+              onClick={() => {
+                handleLike(docs[show.index].id, docs[show.index].count);
+                setLike(true);
+              }}
+            >
+              <i className={'fas fa-heart ' + (like ? 'liked' : '')}></i>
+              <span className="likes-count">{docs[show.index].count}</span>
+            </button>
 
             <div className="position-relative">
               <button onClick={() => setShare(!share)}>
                 <i className="fas fa-share-alt"></i>
               </button>
               {share && (
-                <div data-aos="slide-up" className=" share-options">
+                <motion.div
+                  className=" share-options"
+                  initial={{ y: '100vh' }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <CopyToClipboard text={imageUrl}>
                     <button>
                       <i className="far fa-copy"></i>
@@ -129,7 +124,7 @@ function Gallery(props) {
                   >
                     <i className="fab fa-facebook-f"></i>
                   </FacebookShareButton>
-                </div>
+                </motion.div>
               )}
             </div>
             <div className="position-relative">

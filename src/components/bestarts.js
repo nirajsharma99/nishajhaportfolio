@@ -6,7 +6,6 @@ import Loader from './loader/loader';
 
 function BestArts({ forwardedRef }) {
   const { docs } = useFirestore('toparts');
-  //console.log(docs[0].url);
   const [show, setShow] = useState(null);
 
   useEffect(() => {

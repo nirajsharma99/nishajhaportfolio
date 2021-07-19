@@ -57,7 +57,7 @@ function Dashboard() {
           className="add-buttons"
           onClick={() => history.push('/book/homepage')}
         >
-          Add top arts
+          Edit Homepage
         </button>
         <button
           className="add-buttons"
@@ -82,7 +82,11 @@ function Dashboard() {
       </div>
       <ImageGrid setSelectedImg={setSelectedImg} collection="images" />
       {selectedImg && (
-        <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
+        <Modal
+          selectedImg={selectedImg}
+          setSelectedImg={setSelectedImg}
+          collection={'images'}
+        />
       )}
     </div>
   );
