@@ -29,12 +29,14 @@ function Gallery(props) {
 
   useEffect(() => {
     const id = props.match.params.id;
-    db.collection('images')
-      .doc(id)
-      .get()
-      .then((snapshot) => {
-        setImagedata({ show: true, data: snapshot.data() });
-      });
+    if (id) {
+      db.collection('images')
+        .doc(id)
+        .get()
+        .then((snapshot) => {
+          setImagedata({ show: true, data: snapshot.data() });
+        });
+    }
   }, [props]);
 
   const handleClick = (index) => {
