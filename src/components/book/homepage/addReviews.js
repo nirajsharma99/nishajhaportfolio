@@ -16,7 +16,7 @@ const AddReviews = () => {
     let pic = e.target.files[0];
     if (pic && fileType.includes(pic.type)) {
       new Compressor(pic, {
-        quality: pic.size < 6291456 && pic.size > 3145728 ? 0.6 : 0.4,
+        quality: pic.size > 1048576 ? 0.5 : 0.8,
         success(result) {
           setFile(result);
           setError('');
