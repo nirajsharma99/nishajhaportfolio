@@ -14,8 +14,8 @@ function AboutWork() {
         <div className="about-work-content">
           <h3 className="about-work-heading">Delivery</h3>
           <p className="about-work-desc">
-            Get your art work delivered to your home with ease. extra charges
-            may apply
+            Sitback and relax we will get your art work delivered to your home
+            with ease. (Extra charges may apply)
           </p>
         </div>
       </div>
@@ -24,7 +24,7 @@ function AboutWork() {
           <img src={gift} alt="about-work-logo" />
         </div>
         <div className="about-work-content">
-          <h3 className="about-work-heading">Gifting &amp; framing</h3>
+          <h3 className="about-work-heading">Gifting &amp; Framing</h3>
           <p className="about-work-desc">
             You can get your art gift wrapped if you want it to gift it to your
             dear ones. If you want we can frame the art for you.
