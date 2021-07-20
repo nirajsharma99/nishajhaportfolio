@@ -14,7 +14,7 @@ function FollowOnInstagram() {
         <div className="insta-desc">
           <span className="follow-cursive">follow me on</span>
 
-          <div className="mt-4">
+          <div className="mt-2">
             <a
               href="https://instagram.com/calligraphywrittings?utm_medium=copy_link"
               className="insta-btn "
@@ -30,7 +30,9 @@ function FollowOnInstagram() {
           </div>
         </div>
         <div className="ss-container">
-          <img src={ss} className="ss" alt="instagram-account" />
+          <a href="https://instagram.com/calligraphywrittings?utm_medium=copy_link">
+            <img src={ss} className="ss" alt="instagram-account" />
+          </a>
         </div>
       </div>
     </div>

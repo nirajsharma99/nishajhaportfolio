@@ -5,6 +5,8 @@ import { db } from './firebase/firebaseConfig';
 import { motion } from 'framer-motion';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { WhatsappShareButton, FacebookShareButton } from 'react-share';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import ReferenceForm from './referenceForm';
 import Loader from './loader/loader';
 import SharedImage from './sharedimage';
@@ -16,6 +18,7 @@ function Gallery(props) {
   const [share, setShare] = useState(false);
   const [refer, setRefer] = useState(false);
   const [imagedata, setImagedata] = useState({ show: false, data: null });
+  const [scrollPosition, setScrollposition] = useState(null);
 
   useEffect(() => {
     if (slider) {
@@ -26,6 +29,17 @@ function Gallery(props) {
       }
     }
   }, [show, slider]);
+
+  useEffect(() => {
+    const handleScrolling = () => {
+      setScrollposition(window.scrollY);
+    };
+    handleScrolling();
+    window.addEventListener('scroll', handleScrolling);
+    return () => {
+      window.removeEventListener('scroll', handleScrolling);
+    };
+  }, [setScrollposition]);
 
   useEffect(() => {
     const id = props.match.params.id;
@@ -189,14 +203,14 @@ function Gallery(props) {
       <div className="images-container">
         <motion.div className="gallery" layout>
           {docs.map((image, index) => (
-            <motion.img
+            <LazyLoadImage
+              effect="blur"
+              scrollPosition={scrollPosition}
               src={image.url}
               key={index}
               alt="Gallery image_1"
               className="gallery__img"
               onClick={() => handleClick(index)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
             />
           ))}
         </motion.div>
