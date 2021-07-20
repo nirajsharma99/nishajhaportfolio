@@ -184,7 +184,7 @@ span.name {
   text-align: start;
 }
 .about-work-desc {
-  color: wheat;
+  color: #ebf6f7;
   text-align: start;
   font-size: 1.3rem;
 }
@@ -357,7 +357,7 @@ span.name {
 /*-------------------------------------------------------------------------*/
 /*------------------------------------------contact -----------------------------------*/
 
-.login-div {
+.contact-div {
   max-width: 500px;
   padding: 2rem 2rem;
   border-radius: 40px;
@@ -456,7 +456,7 @@ span.name {
   transition: 0.5s;
   width: 150px;
   color: #ffffff;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem !important;
   border-radius: 30px !important;
   background-color: #49d97f !important;
   position: relative;
@@ -734,11 +734,14 @@ a.insta-btn {
   width: 330px;
 }
 .referClose {
-  position: absolute;
-  top: 0;
+  position: absolute !important;
+  top: -10px;
   right: 0;
   border: none;
   outline: none;
+}
+.referClose i {
+  color: rgba(0, 0, 0, 0.3) !important;
 }
 
 .user-buttons .liked {
@@ -1190,7 +1193,7 @@ a.insta-btn {
   .reviews {
     width: 350px;
   }
-  .login-div {
+  .contact-div {
     max-width: 370px;
   }
 

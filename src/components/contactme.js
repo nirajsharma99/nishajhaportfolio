@@ -4,10 +4,13 @@ import { useEffect, useState } from 'react';
 import FollowOnInstagram from './instagram';
 import { db, timeStamp } from './firebase/firebaseConfig';
 import emailjs from 'emailjs-com';
-const { REACT_APP_EMAILJS_SERVICE_ID } = process.env;
+import Loader2 from './loader/loader2';
+const { REACT_APP_EMAILJS_SERVICE_ID, REACT_APP_NORMAL_TEMPLATE_ID } =
+  process.env;
 
 function ContactMe({ forwardedRef }) {
   emailjs.init('user_PXcL7vI8z3vFeyhLPWnEi');
+  const [loader, setLoader] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [flash, setFlash] = useState({ show: false, error: '' });
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -20,6 +23,7 @@ function ContactMe({ forwardedRef }) {
       var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
       var validEmail = emailPattern.test(form.email);
       if (validEmail) {
+        setLoader(true);
         const date = timeStamp();
         const collectionRef = db.collection('inbox');
         collectionRef
@@ -32,9 +36,10 @@ function ContactMe({ forwardedRef }) {
             starred: false,
           })
           .then(() => {
-            /* setSubmitted(true);
+            setLoader(false);
+            setSubmitted(true);
             setForm({ name: '', email: '', message: '' });
-            setFlash({ ...flash, show: false });*/
+            setFlash({ ...flash, show: false });
           })
           .catch(() => setFlash({ show: true, error: 'An error has occured' }));
 
@@ -47,15 +52,12 @@ function ContactMe({ forwardedRef }) {
         emailjs
           .send(
             REACT_APP_EMAILJS_SERVICE_ID,
-            'template_pwrtudi',
+            REACT_APP_NORMAL_TEMPLATE_ID,
             templateParams
           )
           .then(
             (result) => {
               console.log(result.text);
-              setSubmitted(true);
-              setForm({ name: '', email: '', message: '' });
-              setFlash({ ...flash, show: false });
             },
             (error) => {
               console.log(error.text);
@@ -70,7 +72,7 @@ function ContactMe({ forwardedRef }) {
   };
   return (
     <div ref={forwardedRef}>
-      <div data-aos="slide-up" className="login-div m-auto">
+      <div data-aos="slide-up" className="contact-div m-auto">
         <div className="fields">
           {flash.show && (
             <span className="flash text-danger">
@@ -124,6 +126,7 @@ function ContactMe({ forwardedRef }) {
                 ></path>
               </svg>
             </div>
+            {loader && <Loader2 />}
           </button>
         </div>
       </div>

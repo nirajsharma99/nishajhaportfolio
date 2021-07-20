@@ -3,9 +3,13 @@ import 'aos/dist/aos.css';
 import { useEffect, useState } from 'react';
 import { db, timeStamp } from './firebase/firebaseConfig';
 import emailjs from 'emailjs-com';
+import Loader2 from './loader/loader2';
+const { REACT_APP_EMAILJS_SERVICE_ID, REACT_APP_REFER_TEMPLATE_ID } =
+  process.env;
 
 function ReferenceForm({ reference, setRefer }) {
   const [submitted, setSubmitted] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [flash, setFlash] = useState({ show: false, error: '' });
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   useEffect(() => {
@@ -17,6 +21,7 @@ function ReferenceForm({ reference, setRefer }) {
       var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
       var validEmail = emailPattern.test(form.email);
       if (validEmail) {
+        setLoader(true);
         const date = timeStamp();
         const collectionRef = db.collection('inbox');
         collectionRef
@@ -30,9 +35,10 @@ function ReferenceForm({ reference, setRefer }) {
             starred: false,
           })
           .then(() => {
-            /* setSubmitted(true);
+            setLoader(false);
+            setSubmitted(true);
             setForm({ name: '', email: '', message: '' });
-            setFlash({ ...flash, show: false });*/
+            setFlash({ ...flash, show: false });
           })
           .catch(() => setFlash({ show: true, error: 'An error has occured' }));
 
@@ -45,17 +51,14 @@ function ReferenceForm({ reference, setRefer }) {
         };
         emailjs
           .send(
-            'service_19ygvla',
-            'template_reppzk9',
+            REACT_APP_EMAILJS_SERVICE_ID,
+            REACT_APP_REFER_TEMPLATE_ID,
             templateParams,
             'user_PXcL7vI8z3vFeyhLPWnEi'
           )
           .then(
             (result) => {
               console.log(result.text);
-              setSubmitted(true);
-              setForm({ name: '', email: '', message: '' });
-              setFlash({ ...flash, show: false });
             },
             (error) => {
               console.log(error.text);
@@ -69,20 +72,12 @@ function ReferenceForm({ reference, setRefer }) {
     }
   };
   return (
-    <div data-aos="slide-up" className="login-div">
-      <button
-        className="referClose text-secondary "
-        onClick={() => setRefer(false)}
-      >
+    <div data-aos="slide-up" className="contact-div">
+      <button className="referClose" onClick={() => setRefer(false)}>
         <i className="fas fa-times"></i>
       </button>
-      <div className="fields">
-        {flash.show && (
-          <span className="flash text-danger">
-            <i className="fas fa-exclamation-circle me-1"></i>
-            {flash.error}
-          </span>
-        )}
+      <div className="fields text-center">
+        {flash.show && <span className="flash text-danger">{flash.error}</span>}
         <div className="name-input">
           <input
             type="text"
@@ -137,6 +132,7 @@ function ReferenceForm({ reference, setRefer }) {
               ></path>
             </svg>
           </div>
+          {loader && <Loader2 />}
         </button>
       </div>
     </div>
