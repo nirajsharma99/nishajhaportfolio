@@ -1,5 +1,5 @@
 import mandala from '.././m2.png';
-import clientpic from '.././clientpic.JPG';
+import clientpic from '.././clientpic/clientpic3.jpeg';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';

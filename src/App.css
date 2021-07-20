@@ -62,7 +62,7 @@ span.name {
 .client-pic {
   width: 500px;
   height: 500px;
-  margin-right: -110px;
+  margin-right: -60px;
   border-radius: 50%;
   display: block;
   transform: translate(0px, 0%);
@@ -1070,6 +1070,15 @@ a.insta-btn {
   border-radius: 30px;
   outline: none;
   font-weight: 700;
+}
+.edit-btn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  outline: none;
+  top: 75%;
+  font-size: 2rem;
+  right: 10px;
 }
 .inbox-outer {
   display: flex;
