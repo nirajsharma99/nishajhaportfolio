@@ -5,11 +5,14 @@ import FollowOnInstagram from './instagram';
 import { db, timeStamp } from './firebase/firebaseConfig';
 import emailjs from 'emailjs-com';
 import Loader2 from './loader/loader2';
-const { REACT_APP_EMAILJS_SERVICE_ID, REACT_APP_NORMAL_TEMPLATE_ID } =
-  process.env;
+const {
+  REACT_APP_EMAILJS_SERVICE_ID,
+  REACT_APP_NORMAL_TEMPLATE_ID,
+  REACT_APP_EMAILJS_USER_ID,
+} = process.env;
 
 function ContactMe({ forwardedRef }) {
-  emailjs.init('user_PXcL7vI8z3vFeyhLPWnEi');
+  emailjs.init(REACT_APP_EMAILJS_USER_ID);
   const [loader, setLoader] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [flash, setFlash] = useState({ show: false, error: '' });

@@ -4,10 +4,14 @@ import { useEffect, useState } from 'react';
 import { db, timeStamp } from './firebase/firebaseConfig';
 import emailjs from 'emailjs-com';
 import Loader2 from './loader/loader2';
-const { REACT_APP_EMAILJS_SERVICE_ID, REACT_APP_REFER_TEMPLATE_ID } =
-  process.env;
+const {
+  REACT_APP_EMAILJS_SERVICE_ID,
+  REACT_APP_REFER_TEMPLATE_ID,
+  REACT_APP_EMAILJS_USER_ID,
+} = process.env;
 
 function ReferenceForm({ reference, setRefer }) {
+  emailjs.init(REACT_APP_EMAILJS_USER_ID);
   const [submitted, setSubmitted] = useState(false);
   const [loader, setLoader] = useState(false);
   const [flash, setFlash] = useState({ show: false, error: '' });
@@ -53,8 +57,7 @@ function ReferenceForm({ reference, setRefer }) {
           .send(
             REACT_APP_EMAILJS_SERVICE_ID,
             REACT_APP_REFER_TEMPLATE_ID,
-            templateParams,
-            'user_PXcL7vI8z3vFeyhLPWnEi'
+            templateParams
           )
           .then(
             (result) => {
