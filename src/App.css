@@ -258,6 +258,7 @@ span.name {
   font-weight: 300;
   height: auto;
   overflow: hidden;
+ text-overflow: ellipsis;
   position: relative;
   transition: all 1s;
 }
