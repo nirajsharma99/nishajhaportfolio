@@ -187,6 +187,7 @@ function Gallery(props) {
             onClick={() => {
               setShow({ ...show, show: false });
               setSlider(false);
+              setRefer(false);
             }}
           >
             <i className="fas fa-times"></i>
