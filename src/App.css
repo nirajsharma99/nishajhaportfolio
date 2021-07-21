@@ -736,8 +736,17 @@ a.insta-btn {
   top: -500px;
   left: -165px;
   width: 330px;
+  animation: slideUp 600ms ease-in;
 }
 
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 .referClose {
   position: absolute !important;
   top: -10px;
