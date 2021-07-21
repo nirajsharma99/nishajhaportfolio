@@ -10,31 +10,22 @@ function Reviews({ forwardedRef }) {
   }, []);
 
   function ReadMore({ children, maxCharacterCount = 130 }) {
-    const text = children.trim();
+    const text = children;
     const [readMore, setReadmore] = useState(false);
     const resultString = readMore ? text : text.slice(0, maxCharacterCount);
 
     return (
       <>
         <p className={'mb-0 review-txt'}>
-<<<<<<< HEAD
           {resultString.trim() +
             (resultString.length === maxCharacterCount ? '...' : '')}
-=======
-          {resultString.trim() + (resultString.length === maxCharacterCount ? '...' : '')}
-        </p>}
->>>>>>> ed25a59a59a6f6b9957284f42282cf44673cf6e1
         </p>
         {resultString.length > maxCharacterCount - 1 ? (
           <div className="d-flex justify-content-end">
             <button
               className="d-flex bg-transparent mb-0 h6 font-weight-bold border-0 text-dark "
-<<<<<<< HEAD
               style={{ outline: 'none' }}
               onClick={() => setReadmore(!readMore)}
-=======
-              style={{outline:'none'}}  onClick={() => setReadmore(!readMore)}
->>>>>>> ed25a59a59a6f6b9957284f42282cf44673cf6e1
             >
               {readMore ? 'read less' : 'read more'}
             </button>
