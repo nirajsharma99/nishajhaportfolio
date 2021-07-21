@@ -17,7 +17,7 @@ function Reviews({ forwardedRef }) {
     return (
       <>
         <p className={'mb-0 review-txt'}>
-          {resultString + (resultString.length === maxCharacterCount ? '...' : '')}
+          {resultString.trim() + (resultString.length === maxCharacterCount ? '...' : '')}
         </p>}
         </p>
         {resultString.length > maxCharacterCount - 1 ? (
