@@ -688,17 +688,7 @@ a.insta-btn {
   font-size: 0.7rem;
   font-weight: 700;
 }
-.refer-form-anim {
-  animation: slideUp 600ms ease-in;
-}
-@keyframes slideUp {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
+
 .user-buttons .fa-share-alt,
 .user-buttons .fa-envelope-open-text,
 .user-buttons .fa-play {
@@ -746,6 +736,16 @@ a.insta-btn {
   top: -500px;
   left: -165px;
   width: 330px;
+  animation: slideUp 600ms ease-in;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 .referClose {
   position: absolute !important;
