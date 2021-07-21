@@ -17,13 +17,14 @@ function Reviews({ forwardedRef }) {
     return (
       <>
         <p className={'mb-0 review-txt'}>
-          {resultString +
+          {resultString.trim() +
             (resultString.length === maxCharacterCount ? '...' : '')}
         </p>
         {resultString.length > maxCharacterCount - 1 ? (
           <div className="d-flex justify-content-end">
             <button
               className="d-flex bg-transparent mb-0 h6 font-weight-bold border-0 text-dark "
+              style={{ outline: 'none' }}
               onClick={() => setReadmore(!readMore)}
             >
               {readMore ? 'read less' : 'read more'}

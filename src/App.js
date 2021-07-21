@@ -138,7 +138,7 @@ function App() {
                   toggle={setOn}
                   easing="ease-in"
                   label="Menu"
-                  hideOutline={false}
+                  hideOutline={true}
                   rounded
                 />
               </div>
