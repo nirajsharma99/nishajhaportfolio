@@ -59,15 +59,23 @@ span.name {
     transform: none;
   }
 }
+.client-image-div {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  margin-right: -60px;
+}
 .client-pic {
   width: 500px;
   height: 500px;
+  position: relative;
   margin-right: -60px;
   border-radius: 50%;
   display: block;
   transform: translate(0px, 0%);
   animation: client-inner 1s ease-in;
 }
+
 @keyframes client-inner {
   from {
     transform: translateY(-100%);
@@ -685,6 +693,17 @@ a.insta-btn {
   font-size: 0.7rem;
   font-weight: 700;
 }
+.refer-form-anim {
+  animation: slideUp 600ms ease-in;
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 .user-buttons .fa-share-alt,
 .user-buttons .fa-envelope-open-text,
 .user-buttons .fa-play {
@@ -1153,6 +1172,9 @@ a.insta-btn {
   .client-pic {
     margin-right: 0px;
   }
+  .client-image-div {
+    margin-right: 0px;
+  }
 }
 @media screen and (max-width: 768px) {
   .info-outer {
@@ -1252,6 +1274,10 @@ a.insta-btn {
   p.name,
   span.name {
     font-size: 3rem;
+  }
+  .client-image-div {
+    width: 350px;
+    height: 350px;
   }
   .client-pic {
     width: 350px;
