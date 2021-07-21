@@ -18,7 +18,7 @@ function Reviews({ forwardedRef }) {
       <>
         <p className={'mb-0 review-txt'}>
           {resultString.trim() + (resultString.length === maxCharacterCount ? '...' : '')}
-        </p>}
+        </p>
         </p>
         {resultString.length > maxCharacterCount - 1 ? (
           <div className="d-flex justify-content-end">
