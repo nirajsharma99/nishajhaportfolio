@@ -10,7 +10,7 @@ function Reviews({ forwardedRef }) {
   }, []);
 
   function ReadMore({ children, maxCharacterCount = 130 }) {
-    const text = children;
+    const text = children.trim();
     const [readMore, setReadmore] = useState(false);
     const resultString = readMore ? text : text.slice(0, maxCharacterCount);
 
