@@ -1,5 +1,5 @@
 //import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import useFirestore from './hooks/useFirestore';
 import { db } from './firebase/firebaseConfig';
 import { motion } from 'framer-motion';
@@ -28,7 +28,7 @@ function Gallery(props) {
         setSlider(false);
       }
     }
-  }, [show, slider]);
+  });
 
   useEffect(() => {
     const handleScrolling = () => {
@@ -78,13 +78,14 @@ function Gallery(props) {
   };
 
   const ImageWindow = () => {
-    const [like, setLike] = useState(false);
-    const handleLike = (id, count) => {
-      console.log(like);
-      if (!like) {
-        db.collection('images')
-          .doc(id)
-          .update({ count: count + 1 });
+    const likeRef = useRef();
+    const handleLike = (e, id, count) => {
+      e.preventDefault();
+      db.collection('images')
+        .doc(id)
+        .update({ count: count + 1 });
+      if (likeRef.current) {
+        likeRef.current.setAttribute('disabled', 'disabled');
       }
     };
     const imageUrl =
@@ -100,12 +101,12 @@ function Gallery(props) {
 
           <div className="user-buttons d-inline-flex shadow-lg">
             <button
-              onClick={() => {
-                handleLike(docs[show.index].id, docs[show.index].count);
-                setLike(true);
+              ref={likeRef}
+              onClick={(e) => {
+                handleLike(e, docs[show.index].id, docs[show.index].count);
               }}
             >
-              <i className={'fas fa-heart ' + (like ? 'liked' : '')}></i>
+              <i className={'fas fa-heart '}></i>
               <span className="likes-count">{docs[show.index].count}</span>
             </button>
 

@@ -675,9 +675,9 @@ a.insta-btn {
   color: #fff;
   text-shadow: 0 0 2px #0fa;
   position: absolute;
-  bottom: 3px;
-  right: 14px;
-  font-size: 1rem;
+  bottom: 0px;
+  right: 0px;
+  font-size: 0.85rem;
   font-weight: 700;
 }
 .refer-txt {
