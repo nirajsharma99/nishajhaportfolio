@@ -198,7 +198,7 @@ function Gallery(props) {
     <div className="gallery-container px-3 pb-3">
       {docs.length === 0 && <Loader />}
       <div className="neonText-holder">
-        <span className="neonText">Gallery</span>
+        <span className="neonText">GALLERY</span>
       </div>
       <div className="images-container">
         <motion.div className="gallery" layout>

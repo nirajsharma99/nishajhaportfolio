@@ -3,7 +3,7 @@ import clientpic from '.././clientpic/clientpic3.jpeg';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect, useState } from 'react';
-import { db } from './firebase/firebaseConfig';
+//import { db } from './firebase/firebaseConfig';
 //import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 const Info = ({ forwardedRef }) => {
   /*const [current, setCurrent] = useState(null);

@@ -574,12 +574,12 @@ a.insta-btn {
   padding: 0.5rem;
 }
 .neonText {
-  animation: flicker 1.5s infinite alternate;
   color: #fff;
   font-size: 4rem;
-  font-weight: bolder;
   font-family: 'Major Mono Display', monospace;
+  animation: flicker 2s infinite alternate;
 }
+
 /*---FLICKERING ANIMATION----*/
 @keyframes flicker {
   0%,
