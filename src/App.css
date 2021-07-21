@@ -59,12 +59,7 @@ span.name {
     transform: none;
   }
 }
-.client-image-div {
-  width: 500px;
-  height: 500px;
-  position: relative;
-  margin-right: -60px;
-}
+
 .client-pic {
   width: 500px;
   height: 500px;
@@ -1172,9 +1167,6 @@ a.insta-btn {
   .client-pic {
     margin-right: 0px;
   }
-  .client-image-div {
-    margin-right: 0px;
-  }
 }
 @media screen and (max-width: 768px) {
   .info-outer {
@@ -1275,10 +1267,7 @@ a.insta-btn {
   span.name {
     font-size: 3rem;
   }
-  .client-image-div {
-    width: 350px;
-    height: 350px;
-  }
+
   .client-pic {
     width: 350px;
     height: 350px;

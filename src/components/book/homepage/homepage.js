@@ -6,7 +6,7 @@ import ImageGrid from '../imageGrid';
 import Modal from '../modal';
 import AddReviews from './addReviews';
 import Compressor from 'compressorjs';
-import MyPic from './mypic';
+//import MyPic from './mypic';
 
 const Hompeage = () => {
   const history = useHistory();
@@ -50,7 +50,7 @@ const Hompeage = () => {
       <button className="logout-btn" onClick={() => auth.signOut()}>
         Sign out
       </button>
-      <MyPic />
+      {/*<MyPic/>*/}
       <div className="text-center">
         <span className="name-font display-1">Top Arts !!</span>
         <br />
