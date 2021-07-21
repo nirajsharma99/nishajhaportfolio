@@ -24,7 +24,7 @@ function Reviews({ forwardedRef }) {
           <div className="d-flex justify-content-end">
             <button
               className="d-flex bg-transparent mb-0 h6 font-weight-bold border-0 text-dark "
-              onClick={() => setReadmore(!readMore)}
+              style={{outline:'none'}}  onClick={() => setReadmore(!readMore)}
             >
               {readMore ? 'read less' : 'read more'}
             </button>
