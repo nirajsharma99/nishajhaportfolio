@@ -6,8 +6,15 @@ import { useEffect, useState } from 'react';
 import { db } from './firebase/firebaseConfig';
 //import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 const Info = ({ forwardedRef }) => {
-  const [current, setCurrent] = useState(null);
-
+  /*const [current, setCurrent] = useState(null);
+  useEffect(() => {
+    db.collection('profile')
+      .doc('dp')
+      .get()
+      .then((snap) => {
+        setCurrent(snap.data().url);
+      });
+  });*/
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
@@ -36,9 +43,7 @@ const Info = ({ forwardedRef }) => {
             </h2>
           </div>
           <div className="client-image-div d-flex overflow-hidden justify-content-center align-items-center">
-            {current && (
-              <img src={clientpic} className="client-pic" alt="profile" />
-            )}
+            <img src={clientpic} className="client-pic" alt="profile" />
           </div>
         </div>
       </div>
