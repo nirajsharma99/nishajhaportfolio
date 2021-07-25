@@ -211,7 +211,7 @@ function Gallery(props) {
               src={image.url}
               key={index}
               alt="Gallery image_1"
-              className="gallery__img"
+              className="gallery__img shadow"
               onClick={() => handleClick(index)}
             />
           ))}
