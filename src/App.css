@@ -621,6 +621,10 @@ a.insta-btn {
   border-radius: 20px;
   cursor: pointer;
 }
+.gallery__img:hover{
+  box-shadow: 0 .5rem 1rem #0fa!important;
+}
+}
 .view-image-container {
   position: fixed;
   z-index: 10;
