@@ -624,7 +624,7 @@ a.insta-btn {
 .gallery__img:hover {
   box-shadow: 0 0.5rem 1rem #0fa !important;
   transform: scale(1.02);
-  transition: 0.5s;
+  transition: 0.5s !important;
 }
 .view-image-container {
   position: fixed;
