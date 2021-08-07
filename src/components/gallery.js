@@ -172,16 +172,16 @@ function Gallery(props) {
             </button>
           </div>
         </div>
-        <div className="prev-btn">
-          <button onClick={prev}>
+        {!slider && <div><div className="prev-btn">
+          <button onClick={prev} hidden={refer}>
             <i className="fas fa-chevron-left"></i>
           </button>
         </div>
         <div className="next-btn">
-          <button onClick={next}>
+          <button onClick={next} hidden={refer}>
             <i className="fas fa-chevron-right"></i>
           </button>
-        </div>
+        </div></div>}
         <div className="close-img">
           <button
             onClick={() => {
