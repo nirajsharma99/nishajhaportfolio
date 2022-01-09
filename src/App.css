@@ -5,23 +5,50 @@
   overflow: hidden;
   position: relative;
 }
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 1);
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .App {
   width: 100%;
 }
 .info-outer {
   position: relative;
-  margin: 7rem 0rem;
 }
 .info-container {
   position: relative;
   /*border: 1px solid black;*/
+  height: 100vh;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.info-about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mandala-holder {
+  position: relative;
+  width: 400px;
+  height: 400px;
 }
 .mandala {
   position: absolute;
-  width: 41rem;
-  top: -80px;
-  left: -320px;
+  width: 800px;
+  left: -400px;
+  bottom: -180px;
   opacity: 0.9;
   z-index: -5;
   animation: spin infinite 20s linear;
@@ -59,7 +86,12 @@ span.name {
     transform: none;
   }
 }
-
+.client-image-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
 .client-pic {
   width: 500px;
   height: 500px;
@@ -69,6 +101,11 @@ span.name {
   display: block;
   transform: translate(0px, 0%);
   animation: client-inner 1s ease-in;
+}
+.info-about,
+.mandala-holder,
+.client-image-div {
+  flex: 1;
 }
 
 @keyframes client-inner {
@@ -1174,8 +1211,19 @@ a.insta-btn {
   }
 }
 @media screen and (max-width: 768px) {
-  .info-outer {
-    margin: 3rem 0rem;
+  .info-container {
+    flex-direction: column;
+  }
+  .mandala-holder {
+    position: absolute;
+  }
+
+  .mandala {
+    width: 700px;
+    top: 0;
+    left: -300px;
+    right: 0;
+    bottom: 0;
   }
   .Content {
     width: 95%;

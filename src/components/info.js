@@ -22,9 +22,11 @@ const Info = ({ forwardedRef }) => {
     <div>
       &nbsp;
       <div ref={forwardedRef} className="info-outer">
-        <div className="info-container d-flex flex-md-row flex-column justify-content-end align-items-center">
-          <img src={mandala} alt="mandala" className="mandala" />
-          <div className="d-flex justify-content-center align-items-center">
+        <div className="info-container">
+          <div className="mandala-holder">
+            <img src={mandala} alt="mandala" className="mandala" />
+          </div>
+          <div className="info-about">
             <h2 className="d-flex flex-column">
               <div className="overflow-hidden">
                 <span className="hi">Hi i'm</span>
@@ -42,7 +44,7 @@ const Info = ({ forwardedRef }) => {
               </div>
             </h2>
           </div>
-          <div className="client-image-div d-flex overflow-hidden justify-content-center align-items-center">
+          <div className="client-image-div">
             <img src={clientpic} className="client-pic" alt="profile" />
           </div>
         </div>
